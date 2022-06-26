@@ -1,0 +1,11 @@
+%{
+#include<stdio.h>
+#include "y.tab.h"
+extern yylval;
+%}
+%%
+[+|-|*|/|<|>|=] {printf("operator is %s \n",yytext); return OP;}
+int|char|bool|float|void|for|do|while|if|else|return|printf|scanf|main {printf("Keyword is %s\n",yytext);return KEY;}
+[a-z|A-Z][a-z|A-Z|0-9|_]* {printf("Identifier is %s\n",yytext);return ID;}
+. ;
+%%
